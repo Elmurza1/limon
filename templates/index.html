@@ -23,7 +23,7 @@
 <body>
 
     <header class="header text-center">
-	    <h1 class="blog-name pt-lg-4 mb-0"><a href="index.html">Anthony's Blog</a></h1>
+	    <h1 class="blog-name pt-lg-4 mb-0"><a href="{% url 'home-list' %}">Anthony's Blog</a></h1>
 
 	    <nav class="navbar navbar-expand-lg navbar-dark" >
 
@@ -67,13 +67,14 @@
 		    <div class="container text-center">
 			    <h2 class="heading">DevBlog - A Blog Template Made For Developers</h2>
 			    <div class="intro">Welcome to my blog. Subscribe and get my latest blog post in your inbox.</div>
-			    <form class="signup-form form-inline justify-content-center pt-3">
+			      <form action="reader-email-create/" method="post">
+                           {% csrf_token %}
                     <div class="form-group">
-                        <label class="sr-only" for="semail">Your email</label>
-                        <input type="email" id="semail" name="semail1" class="form-control mr-md-1 semail" placeholder="Enter email">
+                        <label class="sr-only" for="email">Твой  Эмйл</label>
+                        <input type="email" id="email" name="email" class="form-control mr-md-1 email" placeholder="Enter email">
                     </div>
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
-                </form>
+    				  <button type="submit" class="btn btn-primary">Subscribe</button>
+				  </form>
 		    </div><!--//container-->
 	    </section>
 	    <section class="blog-list px-3 py-5 p-md-5">
@@ -83,7 +84,7 @@
 				    <div class="media">
 					    <img class="mr-3 img-fluid post-thumb d-none d-md-flex" src="{{item.img.url}}" alt="image">
 					    <div class="media-body">
-						    <h3 class="title mb-1"><a href="blog-post.html">{{item.title}}</a></h3>
+						    <h3 class="title mb-1"><a href="{% url 'publication-list' item.id 	 %}">{{item.title}}</a></h3>
 						    <div class="meta mb-1"><span class="date">{{item.data}}</span><span class="time">5 min read</span></div>
 						    <div class="intro">{{item.short_description}}...</div>
 						    <a class="more-link" href="{% url 'publication-list' item.id  %}">Read more &rarr;</a>

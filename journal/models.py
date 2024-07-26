@@ -1,7 +1,22 @@
 from django.db import models
 
 # Create your models here.
+
+class Category(models.Model):
+    title = models.CharField
+
+    def __str__(self):
+        return self.title
+
+class Hashtag(models.Model):
+    title = models.CharField(max_length=111)
+
+    def __str__(self):
+        return self.title
+
 class Publication(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    hashtags = models.ManyToManyField(Hashtag)
     title = models.CharField(max_length=255)
     data = models.DateTimeField()
     img = models.ImageField()
@@ -19,9 +34,11 @@ class AboutMe(models.Model):
     data = models.DateField()
 
 
-# class SocialNetwork(models.Model):
-#     twitter =
-#     linkedin
-#     github
-#     stack
-#     codepen
+class Newsletter(models.Model):
+    email = models.EmailField()
+
+
+class Category(models.Model):
+    title = models.CharField
+
+

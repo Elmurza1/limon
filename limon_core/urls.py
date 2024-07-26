@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from journal.views import HomeView, AboutView, PublicationView
+from journal.views import HomeView, AboutView, PublicationView, newsletter_email_view
 from django.conf.urls.static import static
 from django.conf.urls.static import settings
 
@@ -24,6 +24,11 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', HomeView.as_view(), name='home-list'),
     path('about/', AboutView.as_view(), name='about-list'),
-    path('publication/<int:pk/>', PublicationView.as_view(), name='publication-list')
+    path('publication/<int:pk>', PublicationView.as_view(), name='publication-list'),
+
+
+    path('home/reader-email-create/', newsletter_email_view),
+    path('about/reader-email-create/', newsletter_email_view)
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

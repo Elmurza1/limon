@@ -72,23 +72,23 @@
 
 	    <article class="blog-post px-3 py-5 p-md-5">
 		    <div class="container">
-				{%for item in publication_list%}
+
 			    <header class="blog-post-header">
-				    <h2 class="title mb-2">{{item.title}}</h2>
-				    <div class="meta mb-3"><span class="date">{{item.data}}</span><span class="time">5 min read</span></div>
+				    <h2 class="title mb-2">{{publication_list.title}}</h2>
+				    <div class="meta mb-3"><span class="date">{{publication_list.data}}</span><span class="time">5 min read</span></div>
 			    </header>
 
 			    <div class="blog-post-body">
 				    <figure class="blog-banner">
-				        <a href="https://made4dev.com"><img class="img-fluid" src="{{item.img.url}}" alt="image"></a>
+				        <a href="https://made4dev.com"><img class="img-fluid" src="{{publication_list.img.url}}" alt="image"></a>
 				    </figure>
-				    <p>{{item.description}}</p>
+				    <p>{{publication_list.description}}</p>
 
 				    <h3 class="mt-5 mb-3">Video Example</h3>
 				    <p>Как делать ютьюб видео динамичными я Вас научу потом :))</p>
 
 				    <div class="embed-responsive embed-responsive-16by9">
-						{% endfor %}
+
 					   <iframe width="560" height="315" src="https://www.youtube.com/embed/hnCmSXCZEpU" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 					</div>
 
