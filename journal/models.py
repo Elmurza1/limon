@@ -1,3 +1,4 @@
+from ckeditor.fields import RichTextField
 from django.db import models
 
 # Create your models here.
@@ -15,8 +16,8 @@ class Hashtag(models.Model):
         return self.title
 
 class Publication(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE)
-    hashtags = models.ManyToManyField(Hashtag)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
+    hashtags = models.ManyToManyField(Hashtag, null=True)
     title = models.CharField(max_length=255)
     data = models.DateTimeField()
     img = models.ImageField()
@@ -25,20 +26,19 @@ class Publication(models.Model):
 
 
 class AboutMe(models.Model):
-    i = models.TextField()
-    blog = models.TextField()
-    skills = models.TextField()
-    project = models.TextField()
-    img = models.ImageField()
-    imgs = models.ImageField()
-    data = models.DateField()
+    description = RichTextField()
+ # i = models.TextField()
+    # blog = models.TextField()
+    # skills = models.TextField()
+    # project = models.TextField()
+    # img = models.ImageField()
+    # imgs = models.ImageField()
+    data = models.DateField(null=True)
 
 
 class Newsletter(models.Model):
     email = models.EmailField()
 
 
-class Category(models.Model):
-    title = models.CharField
 
 
