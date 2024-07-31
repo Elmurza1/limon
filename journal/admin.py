@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Publication, AboutMe, Newsletter
+from .models import Publication, AboutMe, Newsletter, Hashtag, Category
 @admin.register(Publication)
 class AdminPublication(admin.ModelAdmin):
     list_display = ['title']
@@ -19,6 +19,17 @@ class PublicationClient(admin.ModelAdmin):
 
     def has_change_permission(self, request, obj=None):
         return False
+
+@admin.register(Hashtag)
+class HashtagAdmin(admin.ModelAdmin):
+    list_display = ['title']
+
+
+
+@admin.register(Category)
+class CategoryAdmin(admin.ModelAdmin):
+    list_display = ['title']
+
 
 
 

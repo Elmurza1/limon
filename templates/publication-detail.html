@@ -83,6 +83,12 @@
 				        <a href="https://made4dev.com"><img class="img-fluid" src="{{publication_list.img.url}}" alt="image"></a>
 				    </figure>
 				    <p>{{publication_list.description}}</p>
+					<h3>категория:{{publication_list.category.title}}</h3>
+					<h2>хештеги</h2>
+					{%for item in hashtag%}
+
+					<p>#{{item.title}}</p>
+					{%endfor%}
 
 				    <h3 class="mt-5 mb-3">Video Example</h3>
 				    <p>Как делать ютьюб видео динамичными я Вас научу потом :))</p>
