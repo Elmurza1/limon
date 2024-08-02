@@ -1,7 +1,9 @@
 from django.http import HttpResponse
+from django.shortcuts import render
+from django.views import View
 #rom django.shortcuts import renderfrom
 from django.views.generic import TemplateView
-from .models import Publication, AboutMe, Newsletter, Category, Hashtag
+from .models import Publication, AboutMe, Newsletter, Category, Hashtag, PublicationComment
 
 
 # Create your views here.
@@ -32,8 +34,7 @@ class PublicationView(TemplateView):
         publication_pk = kwargs['pk']
         context = {
             'publication_list': Publication.objects.get(id=publication_pk),
-            'hashtag': Hashtag.objects.all(),
-            'category': Category.objects.first()
+
         }
         return context
 
@@ -55,4 +56,11 @@ def newsletter_email_view(request):
 
 
     Newsletter.objects.create(email=input_email)
-    return HttpResponse("<h1>Вы подписались на этого афтора</h1>")
+    return render(request, 'index.html')
+
+
+class CreateCommentView(View):
+    def post(self, request, *args, **kwargs):
+        publication_pk = kwargs['pk']
+        publication = PublicationComment.objects.get(id=publication_pk)
+        render(request, 'publication-detail.html', { 'publication_list': Publication.objects.get(id=publication_pk),})

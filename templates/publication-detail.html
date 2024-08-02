@@ -85,10 +85,16 @@
 				    <p>{{publication_list.description}}</p>
 					<h3>категория:{{publication_list.category.title}}</h3>
 					<h2>хештеги</h2>
-					{%for item in hashtag%}
+					{%for item in publication_list.hashtags.all %}
 
 					<p>#{{item.title}}</p>
 					{%endfor%}
+
+					<form action="create-comment/" method="POST">
+						{% csrf_token %}
+						<textarea></textarea>
+						<input value="отправить" type="submit">
+					</form>
 
 				    <h3 class="mt-5 mb-3">Video Example</h3>
 				    <p>Как делать ютьюб видео динамичными я Вас научу потом :))</p>

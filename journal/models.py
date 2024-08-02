@@ -16,8 +16,8 @@ class Hashtag(models.Model):
         return self.title
 
 class Publication(models.Model):
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, related_name='publication')
-    hashtags = models.ManyToManyField(Hashtag, null=True)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, )
+    hashtags = models.ManyToManyField(Hashtag, null=True, related_name='hashtags')
     title = models.CharField(max_length=255)
     data = models.DateTimeField()
     img = models.ImageField()
@@ -39,6 +39,12 @@ class AboutMe(models.Model):
 
 class Newsletter(models.Model):
     email = models.EmailField()
+
+
+class PublicationComment(models.Model):
+    publication = models.ForeignKey(Publication, on_delete=models.CASCADE)
+    text = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
 
 
 

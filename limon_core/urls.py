@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from journal.views import HomeView, AboutView, PublicationView, newsletter_email_view
+from journal.views import HomeView, AboutView, PublicationView, newsletter_email_view, CreateCommentView
 from django.conf.urls.static import static
 from django.conf.urls.static import settings
 
@@ -28,7 +28,8 @@ urlpatterns = [
 
 
     path('home/reader-email-create/', newsletter_email_view),
-    path('about/reader-email-create/', newsletter_email_view)
+    path('about/reader-email-create/', newsletter_email_view),
+    path('create-comment/<int:pk>', CreateCommentView.as_view())
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
